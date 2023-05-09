@@ -16,13 +16,13 @@
     }
 
     .main-container{
-        background-color: rgb(255, 193, 193);
+        background-color: rgb(205, 255, 193);
     }
 </style>
 <body>
     
     <div class="conteiner-fluid d-flex flex-column justify-content-center align-items-center main-container">
-        <h1>TODOO LIST</h1>
+        <h1>TODO LIST</h1>
         <div id="app">
 
             <div class="nav d-flex flex-column">
@@ -31,29 +31,29 @@
                     <input @keyup.enter="addTask" type="text" placeholder="inserisci task" v-model="newTask">
                     <button @click="addTask">aggiungi</button>
                 </div>
+
                 <div v-show="error" class="error3">
-                    <span>inserisci una task di almeno 5 caratteri</span>
+                    <span class="text-danger">inserisci una task di almeno 5 caratteri</span>
                 </div>
 
             </div>
 
             <div class="content-task bg-light">
 
-                <ul v-if="tasks.lenght != 0">
+                <ul v-if="tasks.length != 0">
                     <li v-for="(todo,i) in tasks" 
                     :key="i"
                     :class="{'text-decoration-line-through': this.tasks[i].done == true}"
                     class="py-3"
                     >
-                        <span @click="doneTodo(i)"
-                        >{{ todo.text }}</span>
+                        <span @click="doneTodo(i)">{{ todo.text }}</span>
 
-                        <i @click="removeTask" class="fa-solid fa-xmark"></i>
+                        <i @click="removeTask" class="fa-solid fa-xmark ms-3"></i>
                         
                     </li>
                 </ul>
 
-                <h2 v-else>Tutto Fatto</h2>
+                <h2 v-else class="text-center">Tutto Fatto🤯</h2>
             </div>
 
         </div>

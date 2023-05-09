@@ -20,6 +20,16 @@ const app = Vue.createApp({
 					text: "passare aspirapolvere",
 					done: false,
 				},
+
+				{
+					text: "lavare pavimento",
+					done: false,
+				},
+
+				{
+					text: "fare compiti",
+					done: true,
+				},
 			],
 		};
 	},
