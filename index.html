@@ -18,7 +18,7 @@
             <div class="nav d-flex flex-column">
 
                 <div>
-                    <input @keyup.enter="addTask" type="text" placeholder="inserisci task" v-model="newTask">
+                    <input @keyup.enter="addTask" type="text" placeholder="inserisci task" v-model="newTask.text">
                     <button @click="addTask">aggiungi</button>
                 </div>
                 <div v-show="error" class="error3">
@@ -29,7 +29,7 @@
             <div class="content-task">
 
                 <ul v-if="tasks.lenght != 0">
-                    <li v-for="(todo,i) in tasks" :key="i">
+                    <li v-for="(todo,i) in tasks" :key="i" @click="addTextLine()">
                         {{ todo.text }}
                         <i @click="removeTask(i)" class="fa-solid fa-xmark"></i>
                     </li>

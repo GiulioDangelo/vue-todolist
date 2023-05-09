@@ -2,7 +2,11 @@ const app = Vue.createApp({
 
     data() {
         return {
-            newTask : '',
+            newTask : 
+                {
+                  text : '',
+                  done : false
+                },
 
             error : false,
 
@@ -14,7 +18,7 @@ const app = Vue.createApp({
         
                 {
                   text : "lavare i piatti",
-                  done : false
+                  done : true
                 },
         
                 {
@@ -30,10 +34,10 @@ const app = Vue.createApp({
 
     methods: {
         addTask(){
-            let cleanedTask = this.newTask.trim()
+            let cleanedTask = this.newTask.text.trim()
             if(cleanedTask.length >= 4){
-            this.tasks.unshift(this.newTask);
-            this.newTask = '';
+            this.tasks.unshift(this.newTask.text);
+            this.newTask.text = '';
             this.error = false;
         }  else {
             this.error = true;
@@ -43,6 +47,14 @@ const app = Vue.createApp({
     removeTask(index){
         this.tasks.splice(index,1);
     },
+
+    addTextLine(){
+        if (this.done == true) {
+            this.tasks[i].done = !this.tasks[i].done
+            // text.addClass('text-decoration-line-through');
+        }
+    },
+    
 
 }})
 
