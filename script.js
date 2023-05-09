@@ -2,11 +2,7 @@ const app = Vue.createApp({
 
     data() {
         return {
-            newTask : 
-                {
-                  text : '',
-                  done : false
-                },
+            newTask : '',
 
             error : false,
 
@@ -23,7 +19,7 @@ const app = Vue.createApp({
         
                 {
                   text : 'passare aspirapolvere',
-                  done : true
+                  done : false
                 },
             ],
 
@@ -34,28 +30,28 @@ const app = Vue.createApp({
 
     methods: {
         addTask(){
-            let cleanedTask = this.newTask.text.trim()
+            let cleanedTask = this.newTask.trim()
             if(cleanedTask.length >= 4){
-            this.tasks.unshift(this.newTask.text);
-            this.newTask.text = '';
+                let newObj = {
+                    text : cleanedTask,
+                    done : false
+                }
+            this.tasks.unshift(newObj);
+            this.newTask = '';
             this.error = false;
         }  else {
             this.error = true;
         }
+
     },
 
     removeTask(index){
         this.tasks.splice(index,1);
     },
 
-    addTextLine(){
-        if (this.done == true) {
-            this.tasks[i].done = !this.tasks[i].done
-            // text.addClass('text-decoration-line-through');
-        }
-    },
-    
-
+    // addTextLine(i){
+    //         this.tasks[i].done = !this.tasks[i].done
+    //         // text.addClass('text-decoration-line-through');
 }})
 
 
