@@ -2,6 +2,10 @@ const app = Vue.createApp({
 
     data() {
         return {
+            newTask : '',
+
+            error : false,
+
             tasks : [
                 {
                   text : 'fare la spesa',
@@ -15,7 +19,7 @@ const app = Vue.createApp({
         
                 {
                   text : 'passare aspirapolvere',
-                  done : false
+                  done : true
                 },
             ],
 
@@ -25,9 +29,22 @@ const app = Vue.createApp({
 
 
     methods: {
-        
+        addTask(){
+            let cleanedTask = this.newTask.trim()
+            if(cleanedTask.length >= 4){
+            this.tasks.unshift(this.newTask);
+            this.newTask = '';
+            this.error = false;
+        }  else {
+            this.error = true;
+        }
     },
-})
+
+    removeTask(index){
+        this.tasks.splice(index,1);
+    },
+
+}})
 
 
 app.mount('#app');

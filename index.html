@@ -15,19 +15,24 @@
         <h1>TODOO LIST</h1>
         <div id="app">
 
-            <div class="nav">
-                <input type="text" placeholder="inserisci task">
-                <button>aggiungi</button>
+            <div class="nav d-flex flex-column">
+
+                <div>
+                    <input @keyup.enter="addTask" type="text" placeholder="inserisci task" v-model="newTask">
+                    <button @click="addTask">aggiungi</button>
+                </div>
+                <div v-show="error" class="error3">
+                    <span>inserisci una task di almeno 5 caratteri</span>
+                </div>
             </div>
 
             <div class="content-task">
-                <ul v-if="tasks.lenght != 0">
 
+                <ul v-if="tasks.lenght != 0">
                     <li v-for="(todo,i) in tasks" :key="i">
                         {{ todo.text }}
-                        <i class="fa-solid fa-xmark"></i>
+                        <i @click="removeTask(i)" class="fa-solid fa-xmark"></i>
                     </li>
-
                 </ul>
 
                 <h2 v-else>Tutto Fatto</h2>
